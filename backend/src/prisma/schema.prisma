@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("SUPABASE_URL")
+}
+
+// Define the generator for Prisma client
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum StudentStatus {
+  active
+  inactive
+}
+
+model Student {
+  id            Int             @id @default(autoincrement())
+  name          String
+  email         String          @unique
+  cohort        String
+  courses       String[]        @default([])
+  dateJoined    DateTime        @default(now())
+  lastLogin     DateTime        @default(now())
+  status        StudentStatus   @default(active)
+
+  @@map("students")
+}
+
+
+// Model for User
+model User {
+  id            Int    @id @default(autoincrement())
+  name          String
+  email         String @unique
+  password      String
+  
+  @@map("users")
+}
