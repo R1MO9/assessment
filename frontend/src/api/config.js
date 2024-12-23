@@ -1,5 +1,5 @@
 class ApiConfig {
-    static BASE_URL = 'http://localhost:5000'; 
+    static BASE_URL = 'https://assessment-backend-three.vercel.app'; 
 
     // Students
     static GET_STUDENTS = `${ApiConfig.BASE_URL}/students/get-students`;
